@@ -6,15 +6,33 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>CSS Variables</title>
   <style media="screen">
+    :root{
+      --base:#ffc600;
+      --spacing:10px;
+      --blur:10px;
+      --background: #39C1AA;
+    }
+    body{
+      margin: 0;
+    }
+    .hl{
+      color: var(--base)
+    }
+    img{
+      width: 600px;
+      padding: var(--spacing);
+      background-color: var(--base);
+      filter: blur(var(--blur));
+    }
     body{
       text-align: center;
     }
     body{
-      background-color: #19349;
+      background-color:var(--background);
       color: white;
       font-family: 'helvetica neue',sans-serif;
       font-weight: 100;
-      font-size: 50px;
+      font-size: 34px;
     }
     .controls{
       margin-bottom: 50px;
@@ -25,18 +43,32 @@
   </style>
 </head>
 <body>
-  <h1>Update CSS Variables with <span class="h1">JS</span></h1>
+  <h2>Update CSS Variables with <span class="hl">JS</span></h2>
   <div class="controls">
+    <label for="Background">Background</label>
+    <input type="color" name="background" value="#39C1AA">
+
     <label for="spacing">Spacing:</label>
     <input type="range" name="spacing" min="10" max="200" value="10" data-sizing="px">
 
     <label for="blur">Blur:</label>
-    <input type="range" name="blur" value="10" min="0" max="25" data-sizing="px">
+    <input type="range" name="blur" value="2" min="0" max="10" data-sizing="px">
 
     <label for="base">Base Color</label>
-    <input type="range" name="base" value="#ffc600">
+    <input type="color" name="base" value="#ffc600">
 
-    <img src="" alt="">
   </div>
+  <img src="./image.jpg">
+<script type="text/javascript">
+  const inputs = document.querySelectorAll('.controls input')
+
+  inputs.forEach(input => input.addEventListener('change',handleUpdate))
+  inputs.forEach(input => input.addEventListener('mousemove',handleUpdate))
+
+  function handleUpdate() {
+    const suffix = this.dataset.sizing || ''
+    document.documentElement.style.setProperty(`--${this.name}`,this.value + suffix)
+  }
+</script>
 </body>
 </html>
