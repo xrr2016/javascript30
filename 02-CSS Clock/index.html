@@ -14,6 +14,8 @@
     }
     body{
       font-size: 2rem;
+      margin: 0;
+      padding: 0;
       display: flex;
       flex: 1;
       min-height: 100vh;
@@ -41,20 +43,99 @@
     }
     .hand{
       position: absolute;
+      top: 50%;
+      left: 50%;
       width: 50%;
       height: 6px;
+      transform: rotate(-90deg);
       background-color: black;
+      transform-origin: left;
+      transition: all .03s linear;
+    }
+    .second-hand{
+      width: 44%;
+    }
+    .hour-hand{
+      width: 24%;
+      height: 12px;
+    }
+    .minute-hand{
+      width: 34%;
+      height: 10px;
+    }
+    .centerPoint{
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto;
+      width:24px;
+      height: 24px;
+      background-color: #000;
+      border-radius: 50%;
+      z-index: 10;
+    }
+    .twelveClock,.threeClock,.sixClock,.nineClock{
+      position: absolute;
+      font-size: 40px;
+      color: #000;
+      width: 50px;
+      height: 50px;
+    }
+    .twelveClock{
+      left: 50%;
+      top: 0;
+      margin-left: -25px;
+    }
+    .threeClock{
       top: 50%;
+      right: 0;
+      margin-top: -25px;
+    }
+    .sixClock{
+      bottom: 0;
+      left: 50%;
+      margin-left: -25px;
+    }
+    .nineClock{
+      left: 0;
+      top: 50%;
+      margin-top: -25px;
     }
   </style>
 </head>
 <body>
   <div class="clock">
     <div class="clock-face">
+      <div class="twelveClock">12</div>
+      <div class="threeClock">3</div>
+      <div class="sixClock">6</div>
+      <div class="nineClock">9</div>
+      <div class="centerPoint"></div>
       <div class="hand hour-hand"></div>
       <div class="hand minute-hand"></div>
       <div class="hand second-hand"></div>
     </div>
   </div>
+<script type="text/javascript">
+  const hourHand = document.querySelector('.hour-hand')
+  const minuteHand = document.querySelector('.minute-hand')
+  const secondHand = document.querySelector('.second-hand')
+  function setDate(){
+    const d = new Date(),
+          hours = d.getHours(),
+          minutes = d.getMinutes(),
+          seconds = d.getSeconds(),
+          hoursDegrees = ((hours / 12) * 360)-90,
+          minutesDegrees = ((minutes / 60) * 360)-90,
+          secondsDegrees = ((seconds / 60) * 360)-90
+    hourHand.style.transform = `rotate(${hoursDegrees}deg)`
+    minuteHand.style.transform = `rotate(${minutesDegrees}deg)`
+    secondHand.style.transform = `rotate(${secondsDegrees}deg)`
+  }
+  setDate()
+  setInterval(setDate,1000)
+</script>
 </body>
 </html>
