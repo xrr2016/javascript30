@@ -89,7 +89,7 @@
 
         //Array.prototype.filter()
         //1. filter the list of  inventors for those who were born in the 1500's
-        // console.log(
+        // console.table(
         //   inventors.filter(inventor => {return inventor.year >= 1500 && inventor.year < 1600 })
         // )
 
@@ -98,7 +98,7 @@
         //Array.prototype.map()
         //2. give us a array of the inventors' first and last name
 
-        // const names = []
+        // const names = inventors.map(inventor => inventor.first + " " +inventor.last)
         // inventors.map(inventor => {
         //   names.push({
         //     first : inventor.first,
@@ -114,57 +114,78 @@
         //     return  (next.passed - next.year) -  (prev.passed - prev.year)
         //   })
         // )
+        // const ordered = inventors.sort((a,b) => { return (a.year - b.year)})
+        // console.table(ordered)
 
         //Array.prototype.reduce()
         //4. how many years did all the inventors live
         // const ages = inventors.map(inventor => {return inventor.passed - inventor.year})
         // console.log(ages.sort((a,b) => {return b-a}))
 
+        // const totalYear = inventors.reduce((total, inventor) => {
+        //     return total + (inventor.passed - inventor.year)
+        // },0)
+        // console.log(totalYear)
+
         //5. sort ths inventors by year lived
-        // console.log(
-        //   inventors.sort((p,c) => {return  (p.passed - p.year) -  (c.passed - c.year) } )
+        // console.table(
+        //   inventors.sort((p,c) => {return  (c.passed - c.year) -  (p.passed - p.year) } )
         // )
 
         //6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
+
 
         //7. sort Exercise
         // sort the people alphabetically by last name
         // console.log(
         //   peoples.sort((p, c) => {return p[p.indexOf(',') + 1] - c[c.indexOf(',') + 1] })
         // )
-
+        // const alpha = peoples.sort((lastOne,nextOne)=>{
+        //   const [alast,afirst] = lastOne.split(', ')
+        //   const [blast,bfirst] = nextOne.split(', ')
+        //   return alast > blast ? 1 : -1
+        // })
+        // console.table(alpha)
 
         //8. reduce Exercise
         // sum up the instances of each of these
         const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck']
-        console.log(data.length)
-        const num = {
-          carNum:0,
-          truckNum:0,
-          vanNum:0,
-          bikeNum:0,
-          walkNum:0
-        }
-        data.map(item => {
-          switch (item) {
-            case 'car':
-                num.carNum += 1
-              break
-            case 'truck':
-                  num.truckNum += 1
-              break
-            case 'bike':
-                  num.bikeNum += 1
-              break
-            case 'walk':
-                num.walkNum += 1
-              break
-            case 'van':
-                num.vanNum += 1
-              break
+        // console.log(data.length)
+        // const num = {
+        //   carNum:0,
+        //   truckNum:0,
+        //   vanNum:0,
+        //   bikeNum:0,
+        //   walkNum:0
+        // }
+        // data.map(item => {
+        //   switch (item) {
+        //     case 'car':
+        //         num.carNum += 1
+        //       break
+        //     case 'truck':
+        //           num.truckNum += 1
+        //       break
+        //     case 'bike':
+        //           num.bikeNum += 1
+        //       break
+        //     case 'walk':
+        //         num.walkNum += 1
+        //       break
+        //     case 'van':
+        //         num.vanNum += 1
+        //       break
+        //   }
+        // })
+        // console.log(num)
+        const transport = data.reduce((obj, item) => {
+          if (!obj[item]) {
+            obj[item] = 0
           }
-        })
-        console.log(num)
+          obj[item]++
+          return obj
+        }, {})
+        console.log(transport)
     </script>
 </body>
 
