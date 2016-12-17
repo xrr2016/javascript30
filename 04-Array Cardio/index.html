@@ -78,7 +78,7 @@
             'Black Raspberry Crunch', 'Chocolate Brownies', 'Pistachio Almond', 'Strawberry', 'Lavender Honey', 'Lychee', 'Peach', 'Black Walnut', 'Birthday Cake', 'Mexican Chocolate', 'Mocha Almond Fudge', 'Raspberry'
         ]
 
-        const people = [
+        const peoples = [
             'Beck, Glenn', 'Becker, Carl', 'Beckett, Samuel', 'Beddoes, Mick', 'Beecher, Henry',
             'Beethoven, Ludwig', 'Begin, Menachem', 'Belloc, Hilaire', 'Bellow, Saul', 'Benchley, Robert', 'Benenson, Peter', 'Ben-Gurion, David', 'Benjamin, Walter', 'Benn, Tony', 'Bennington, Chester', 'Benson, Leana', 'Bent, Silas',
             'Bentsen, Lloyd', 'Berger, Ric', 'Bergman, Ingmar',
@@ -89,26 +89,82 @@
 
         //Array.prototype.filter()
         //1. filter the list of  inventors for those who were born in the 1500's
+        // console.log(
+        //   inventors.filter(inventor => {return inventor.year >= 1500 && inventor.year < 1600 })
+        // )
+
+
 
         //Array.prototype.map()
         //2. give us a array of the inventors' first and last name
 
+        // const names = []
+        // inventors.map(inventor => {
+        //   names.push({
+        //     first : inventor.first,
+        //     last  : inventor.last
+        //   })
+        // })
+        // console.log(names)
+
         //Array.prototype.sort()
         //3. sort the inventors by birthdate , oldest to youngest
+        // console.log(
+        //   inventors.sort( (prev,next) => {
+        //     return  (next.passed - next.year) -  (prev.passed - prev.year)
+        //   })
+        // )
 
         //Array.prototype.reduce()
         //4. how many years did all the inventors live
+        // const ages = inventors.map(inventor => {return inventor.passed - inventor.year})
+        // console.log(ages.sort((a,b) => {return b-a}))
 
         //5. sort ths inventors by year lived
+        // console.log(
+        //   inventors.sort((p,c) => {return  (p.passed - p.year) -  (c.passed - c.year) } )
+        // )
 
         //6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
 
         //7. sort Exercise
         // sort the people alphabetically by last name
+        // console.log(
+        //   peoples.sort((p, c) => {return p[p.indexOf(',') + 1] - c[c.indexOf(',') + 1] })
+        // )
+
 
         //8. reduce Exercise
         // sum up the instances of each of these
         const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck']
+        console.log(data.length)
+        const num = {
+          carNum:0,
+          truckNum:0,
+          vanNum:0,
+          bikeNum:0,
+          walkNum:0
+        }
+        data.map(item => {
+          switch (item) {
+            case 'car':
+                num.carNum += 1
+              break
+            case 'truck':
+                  num.truckNum += 1
+              break
+            case 'bike':
+                  num.bikeNum += 1
+              break
+            case 'walk':
+                num.walkNum += 1
+              break
+            case 'van':
+                num.vanNum += 1
+              break
+          }
+        })
+        console.log(num)
     </script>
 </body>
 
