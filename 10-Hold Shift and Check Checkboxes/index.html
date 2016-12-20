@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style media="screen">
+    html{
+      font-family: sans-serif;
+      background-color: #ffc600;
+    }
+    .inbox{
+      max-width: 400px;
+      margin: 50px auto;
+      background-color: white;
+      border-radius: 5px;
+      box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.1);
+    }
+    .item{
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid #f1f1f1;
+    }
+    .item:last-child{
+      border-bottom: none;
+    }
+    input:checked + p {
+      background-color: #f9f9f9;
+      text-decoration: line-through;
+    }
+    input[type="checkbox"]{
+      margin: 20px;
+    }
+    p{
+      margin: 0;
+      padding: 20px;
+      transition: background .2s;
+      flex: 1;
+      font-family: 'helvetica neue';
+      font-size: 20px;
+      font-weight: 200;
+      border-left: 1px solid #fff;
+    }
+    .details{
+      text-align: center;
+      font-size: 15px;
+    }
+  </style>
+</head>
+<body>
+  <div class="inbox">
+    <div class="item">
+      <input type="checkbox" name="" value="">
+      <p>This is an inbox layout.</p>
+    </div>
+    <div class="item">
+      <input type="checkbox" name="" value="">
+      <p>Check one item</p>
+    </div>
+    <div class="item">
+      <input type="checkbox" name="" value="">
+      <p>Hold down Shift key</p>
+    </div>
+    <div class="item">
+      <input type="checkbox" name="" value="">
+      <p>Check a lower item</p>
+    </div>
+    <div class="item">
+      <input type="checkbox" name="" value="">
+      <p>Everything inbetween should also be set to checked</p>
+    </div>
+    <div class="item">
+      <input type="checkbox" name="" value="">
+      <p>Try do it with out any libraries</p>
+    </div>
+    <div class="item">
+      <input type="checkbox" name="" value="">
+      <p>Just regular JavaScript</p>
+    </div>
+    <div class="item">
+      <input type="checkbox" name="" value="">
+      <p>Good Luck!</p>
+    </div>
+    <div class="item">
+      <input type="checkbox" name="" value="">
+      <p>Don't forget to tweet your result!</p>
+    </div>
+  </div>
+</body>
+</html>
