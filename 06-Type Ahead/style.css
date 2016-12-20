@@ -1,6 +1,6 @@
 html{
   box-sizing: border-box;
-  background-color: #00a497;
+  background-color: #a2d7dd;
   font-family: 'helvetica neue';
   font-size: 20px;
   font-weight: 200;
@@ -63,7 +63,7 @@ span.population{
   font-size: 15px;
 }
 .hl{
-  background-color: #ffc600;
+  background-color: #a2d7dd;
 }
 .love{
   text-align: center;
