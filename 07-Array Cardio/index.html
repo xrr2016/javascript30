@@ -23,11 +23,29 @@
       {text:'Nice Nice Nice!',id:523328},
     ]
     //Array.prototype.some()
+    const isAdult = people.some(person => {
+      return (new Date()).getFullYear() - person.year >= 19
+    })
+    console.log({isAdult})
     //Array.prototype.every()
-
+    const everyIsAdult = people.every(person => {
+      return (new Date()).getFullYear() - person.year >= 19
+    })
+    console.log({everyIsAdult})
     //Array.prototype.find()
-
+    const comment = comments.find(comment => { return comment.id === 2034872})
+    console.log(comment)
     //Array.prototype.findIndex()
+    const index = comments.findIndex(comment => comment.id === 2034872)
+    console.log(index)
+
+    // const newComments = comments.splice(index,1)
+    // console.table(newComments)
+    const newComments = [
+      ...comments.slice(0,index),
+      ...comments.slice(index + 1)
+    ]
+    console.table(newComments)
   </script>
 </body>
 </html>
