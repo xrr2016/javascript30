@@ -17,14 +17,17 @@ body{
 .player{
   position: relative;
   max-width: 750px;
-  border: 5px solid rgba(0, 0, 0, 0.2);
+  border: 2px solid rgba(0, 0, 0, 0.2);
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
   font-size: 0;
   overflow: hidden;
 }
+.player_video{
+  width: 100%;
+}
 .player_button{
-  background: none;
   border: 0;
+  background: none;
   line-height: 1;
   color: white;
   text-align: center;
@@ -32,13 +35,14 @@ body{
   padding: 0;
   cursor: pointer;
   max-width: 50px;
+  transition: all .01s ease;
 }
 .player_button:focus{
   border-color: #ffc600;
 }
 .player_slider{
   width: 10px;
-  height: 30px;
+  height: 20px;
 }
 .player_controls{
   display: flex;
@@ -56,7 +60,7 @@ body{
 .player:hover .progerss{
   height: 15px;
 }
-.player_controls{
+.player_controls > *{
   flex: 1;
 }
 .progress{
@@ -64,12 +68,12 @@ body{
   display: flex;
   flex: 10;
   flex-basis: 100%;
-  height: 5px;
+  height: 8px;
   transition: height .3s;
   background-color: rgba(0, 0, 0, 0.5);
   cursor: ew-resize;
 }
-.progress_filled{
+.progress_failled{
   width: 50%;
   background-color: #ffc600;
   flex: 0;
@@ -86,7 +90,7 @@ input[type=range]:focus{
 }
 input[type=range]::-webkit-slider-runnable-track{
   width: 100%;
-  height: 8.4px;
+  height: 10px;
   cursor: pointer;
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.0),0 0 1px rgba(13,13,13,0);
   background: rgba(255, 255, 255, 0.8);

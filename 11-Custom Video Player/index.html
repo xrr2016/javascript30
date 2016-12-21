@@ -5,22 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>HTML Video Player</title>
-  <script src="./script.js"></script>
+  <link rel="stylesheet" href="./style.css">
 </head>
 <body>
   <div class="player">
-    <video class="player_video viewer" src="https://player.vimeo.com/external/194837908.sd.mp4?s=c350076905b78c67f74d7ee39fdb4fef01d12420&profile_id=164"></video>
+    <video class="player_video viewer"  src="http://w3schools.bootcss.com/html/mov_bbb.mp4"></video>
 
     <div class="player_controls">
       <div class="progress">
         <div class="progress_failled"></div>
       </div>
       <button class="player_button toggle" title="Toggle Play">►</button>
-      <input class="player_sider" type="range" name="valume" min="0" max="1" step="0.05" value="1">
-      <input class="player_sider" type="range" name="playbackRate" min="0.5" max="2" step="0.1" value="1">
-      <button data-skip="-10" class="player_button"><< 10s</button>
-      <button data-skip="25" class="player_button">25s >></button>
+      <input class="player_slider" type="range" name="volume" min="0" max="1" step="0.05" value="0.5">
+      <input class="player_slider" type="range" name="playbackRate" min="0.5" max="2" step="0.1" value="1">
+      <button data-skip="-10" class="player_button">« 10s</button>
+      <button data-skip="10" class="player_button">10s »</button>
     </div>
   </div>
+<script src="./script.js"></script>
 </body>
 </html>
