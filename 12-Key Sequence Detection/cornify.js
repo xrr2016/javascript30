@@ -5,7 +5,7 @@ var cornify_add = function() {
 	var div = document.createElement('div');
 	div.style.position = 'fixed';
 
-	// document.title = '&#10024; &#129412; &#10024;';
+	// document.title = 'HelloThere!';
 
 	var numType = 'px';
 	var heightRandom = Math.random()*.75;
@@ -42,7 +42,7 @@ var cornify_add = function() {
 	var img = document.createElement('img');
 	var currentTime = new Date();
 	var submitTime = currentTime.getTime();
-	if( cornify_count==15 ) submitTime = 0;
+	if( cornify_count === 15 ) submitTime = 0;
 	img.setAttribute('src',cornify_url+'getacorn.php?r=' + submitTime + '&url='+document.location.href);
 	var ease = "all .1s linear";
 	//div.style['-webkit-transition'] = ease;

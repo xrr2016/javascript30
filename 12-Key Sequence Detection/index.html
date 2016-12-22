@@ -6,10 +6,31 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Key Detection</title>
   <script src="./cornify.js"></script>
+  <style media="screen">
+    .secrect-code{
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+      text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+  </style>
 </head>
 <body>
+  <div class="secrect-code">Press Javascript Key</div>
 <script type="text/javascript">
+  const pressed = []
+  const secrectCode = 'javascript'
 
+  window.addEventListener('keyup',(e) => {
+    pressed.push(e.key)
+    pressed.splice(-secrectCode.length -1,pressed.length - secrectCode.length)
+    console.log(pressed);
+    if (pressed.join('').includes(secrectCode)) {
+      cornify_add()
+    }
+  })
 </script>
 </body>
 </html>
