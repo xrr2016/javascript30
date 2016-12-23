@@ -23,11 +23,38 @@
   </div>
 
 <script>
-  const addItems = document.querySelector('.add-items');
-  const itemsList = document.querySelector('.plates');
-  const items = [];
+  const addItems = document.querySelector('.add-items')
+  const itemsList = document.querySelector('.plates')
+  const items = []
+
+  function addItem(e){
+    e.preventDefault()
+    const text = (this.querySelector('[name=item]')).value
+    const item = {
+      text,
+      done : false
+    }
+    items[items.length] = item
+    populateList(items,itemsList)
+    this.reset()
+  }
+  function populateList(plates = [], platesList){
+    // platesList.innerHTML = plates.map((plate,i) => {
+    //   return `
+    //     <li>
+    //       <label>${plate.text}</label>
+    //     </li>
+    //   `
+    // }).join('')
+    if(platesList.childNodes[1].textContent === 'Loading Tapas...'){
+      platesList.removeChild(platesList.childNodes[1])
+    }
+    const plate = document.createElement('li')
+    plate.innerHTML = `<label>${plates[plates.length - 1].text}</label>`
+    platesList.appendChild(plate)
+  }
+
+  addItems.addEventListener('submit',addItem)
 </script>
-
-
 </body>
 </html>
