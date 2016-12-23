@@ -19,6 +19,18 @@
         newPlayers.pop()
         console.log('oldArray',players)
         console.log('newArray',newPlayers)
+        const another = Array.from(players)
+        another[0] = "kevin"
+        console.log(players,another)
+        const theOther = Array(...players)
+        theOther.shift()
+        console.log(players,theOther)
+        const oneOther = players.slice()
+        oneOther[0] = 'Martin'
+        console.log(players,oneOther)
+        const team = [].concat(players)
+        team.unshift('James')
+        console.log(players,team)
         // however what happens when we update that array?
         // now here is the problem!
         // oh no - we have edited the original array too!
@@ -30,12 +42,22 @@
 
         // now when we update it, the original one isn't changed
         // The same thing goes for objects, let's say we have a person object
-
         // with Objects
+        const person = {
+          name : 'Pat Smith',
+          age : 24,
+          friends:['Rose','Martin']
+        }
         // and think we make a copy:
         // how do we take a copy instead?
         // We will hopefully soon see the object ...spread
+        const male = Object.assign({},person,{work:'teacher'}) // Only Level Deep!!!
+        console.log(person,male)
         // Things to note - this is only 1 level deep - both for Arrays and Objects. lodash has a cloneDeep method, but you should think twice before using it
+        const female = JSON.parse(JSON.stringify(person))
+        female.friends.push('Kevin')  
+        console.log(person,female)
+
     </script>
 </body>
 
