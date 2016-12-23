@@ -10,7 +10,7 @@
       box-sizing: border-box;
       background-color: #eaedf7;
       font-family: 'helvetica neue';
-      font-size: 20px;;
+      font-size: 20px;
       font-weight: 200;
     }
     body{
@@ -28,6 +28,9 @@
       background-color: white;
       padding: 40px;
       text-align: justify;
+      letter-spacing: 1px;
+      overflow: hidden;
+      box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4),inset 1px 1px 2px rgba(0,0,0,.1);
     }
     .align-left{
       float: left;
@@ -62,11 +65,14 @@
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia magni voluptates, vitae recusandae excepturi tempora, beatae debitis hic eum consequuntur tenetur ea laboriosam eligendi vero consectetur provident nihil voluptate odit!</p>
     <img src="./imgs/400.jpg" alt="" class="align-left slide-in">
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
     <img src="./imgs/401.jpg" alt="" class="align-right slide-in">
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi similique quos, fugiat! Temporibus eaque impedit expedita optio debitis, quos dolores eum sequi eligendi totam, asperiores veritatis, quia porro corporis. Fugiat.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur debitis velit necessitatibus corporis, tempora commodi dicta inventore ea dolores praesentium maiores optio, sed eum veniam. Fugit fugiat adipisci repudiandae praesentium!</p>
     <img src="./imgs/500.jpg" alt="" class="align-left slide-in">
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis, accusamus, aliquid. Voluptate inventore velit architecto similique incidunt placeat, praesentium iure vero sunt hic odit qui dolorem dolor autem! Deserunt, quidem.</p>
     <img src="./imgs/400.jpg" alt="" class="align-right slide-in">
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
   </div>
   <script type="text/javascript">
@@ -75,17 +81,33 @@
       return function(){
         const self = this,
               args = arguments
-
         const later = function(){
           timeout = null
           if(!immediate) func.apply(self,args)
         }
         const callNow = immediate && !timeout
         clearTimeout(timeout)
-        timeout = setTimeout(laster,wait)
+        timeout = setTimeout(later,wait)
         if(callNow) func.apply(self,args)
       }
     }
+    const slideImgs = document.querySelectorAll('.slide-in')
+    function checkSlide(e){
+        slideImgs.forEach(img => {
+          const slideInAt = (window.scrollY + window.innerHeight) - img.height / 2
+          const imgBottom = img.offsetTop + img.height
+          const isHalfShow = slideInAt > img.offsetTop
+          const isNotScrolledPast = window.scrollY < imgBottom
+          if(isHalfShow && isNotScrolledPast){
+            img.classList.add('active')
+          }else{
+            img.classList.remove('active')
+          }
+        })
+    }
+    window.addEventListener('scroll', debounce(checkSlide,50))
+
+
   </script>
 </body>
 </html>
