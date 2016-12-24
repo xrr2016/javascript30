@@ -52,11 +52,11 @@ h2{
   display: none;
 }
 .plates input + label:before{
-  content: "⬜️";
+  content: "N";
   margin-right: 10px;
 }
-.plates inputL:checked + label:before{
-  content: "🌮";
+.plates input:checked + label:before{
+  content: "Y";
 }
 .add-items{
   margin-top: 20px;
