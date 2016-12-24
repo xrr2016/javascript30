@@ -25,7 +25,7 @@
 <script>
   const addItems = document.querySelector('.add-items')
   const itemsList = document.querySelector('.plates')
-  const items = []
+  const items = JSON.parse(localStorage.getItem('items')) || []
 
   function addItem(e){
     e.preventDefault()
@@ -36,28 +36,29 @@
     }
     items[items.length] = item
     populateList(items,itemsList)
+    localStorage.setItem('items',JSON.stringify(items))
     this.reset()
   }
   function populateList(plates = [], platesList){
-    // platesList.innerHTML = plates.map((plate,i) => {
-    //   return `
-    //     <li>
-    //       <label>${plate.text}</label>
-    //     </li>
-    //   `
-    // }).join('')
-    if(platesList.childNodes[1].textContent === 'Loading Tapas...'){
-      platesList.removeChild(platesList.childNodes[1])
-    }
-    const plate = document.createElement('li')
-    plate.innerHTML = `
-      <input type="checkbox" data-index="${plates.length - 1}" id="item${plates.length - 1}" ${plates[plates.length - 1].done ? 'checked' : "" }></input>
-      <label for="item${plates.length - 1}" >${plates[plates.length - 1].text}</label>
+    platesList.innerHTML = plates.map((plate,i) => {
+      return `
+        <li>
+          <input type="checkbox" data-index="${i}" id="item${i}" ${plate.done?"checked":""}></input>
+          <label for="item${i}">${plate.text}</label>
+        </li>
       `
-    platesList.appendChild(plate)
+    }).join('')
   }
-
+  function toggleDone(e){
+    if (!e.target.matches('input')) return
+    const index = e.target.dataset.index
+    items[index].done = !items[index].done
+    localStorage.setItem('items',JSON.stringify(items))
+    populateList(items,itemsList)
+  }
   addItems.addEventListener('submit',addItem)
+  itemsList.addEventListener('click',toggleDone)
+  populateList(items,itemsList)
 </script>
 </body>
 </html>
