@@ -10,6 +10,9 @@
       color: black;
       font-family: sans-serif;
     }
+    body{
+      margin: 0;
+    }
     .hero{
       display: flex;
       min-height: 100vh;
@@ -18,14 +21,38 @@
       color: black;
     }
     h1{
-      text-shadow: 10px 10px 0 rgba(0, 0, 0, 0.1);
+      text-shadow: 10px 10px 0 rgba(0, 0, 0, 0.5);
       font-size: 100px;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
   <div class="hero">
-    <h1 contenteditable>🔥WOAH!</h1>
+    <h1>🔥WOAH!</h1>
   </div>
+  <script type="text/javascript">
+    const hero = document.querySelector('.hero')
+    const text = hero.querySelector('h1')
+    const walk = 100
+    function shadow(e){
+      const { offsetWidth:width,offsetHeight:height } = hero
+      let { offsetX:x,offsetY:y } = e
+      if (this !== e.target) {
+        x = x + e.target.offsetLeft
+        y = y + e.target.offsetTop
+      }
+      const xWalk = Math.round((x / width * walk) - (walk / 2))
+      const yWalk = Math.round((y / height * walk) - (walk / 2))
+      text.style.textShadow = `
+          ${xWalk}px ${yWalk}px  0 rgba(0,0,0,.3),
+          ${xWalk * - 1}px ${yWalk * 2}px 0 orange,
+          ${xWalk * 9}px ${yWalk * 5}px 0 blue,
+          ${xWalk * 3}px ${yWalk * -2}px 0 red,
+          ${xWalk * 4}px ${yWalk + 30}px 0 green
+        `
+    }
+    hero.addEventListener('mousemove',shadow)
+  </script>
 </body>
 </html>
