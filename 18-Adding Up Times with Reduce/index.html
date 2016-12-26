@@ -186,7 +186,30 @@
         </li>
     </ul>
     <script type="text/javascript">
-        const timeNodes = document.querySelectorAll('[data=time]')
+        const timeNodes = [...document.querySelectorAll('[data-time]')]
+        const seconds = timeNodes
+                        .map(node => node.dataset.time)
+                        .map(timeCode => {
+                          const [mins,second] = timeCode.split(':').map(parseFloat)
+                          return (mins * 60 + second)
+                        })
+                        .reduce((total,second) => {
+                          return total + second
+                        },0)
+
+        let secondLeft = seconds
+        const hours = Math.floor(secondLeft / 3600)
+        secondLeft = secondLeft % 3600
+        const mins = Math.floor(secondLeft / 60)
+        secondLeft = secondLeft % 60
+        console.log(hours,mins,secondLeft)
+
+        timeNodes.map(node => {
+          node.textContent = `${node.textContent} --- ${node.dataset.time}s`
+        })
+        const totalTime = document.createElement('li')
+        totalTime.innerHTML = `共计 ${hours}:${mins}:${secondLeft}`
+        document.querySelector('.videos').appendChild(totalTime)
     </script>
 </body>
 
