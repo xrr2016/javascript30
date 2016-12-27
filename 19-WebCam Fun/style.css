@@ -8,6 +8,9 @@ html{
   font-size: 10px;
   background-color: #ffc600;
 }
+html,body{
+  margin: 0;
+}
 .photobooth{
   background-color: white;
   max-width: 150rem;
@@ -25,9 +28,9 @@ html{
 }
 .player{
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 40px;
   width: 200px;
+  right: 20px;
 }
 .strip{
   padding: 2rem;
