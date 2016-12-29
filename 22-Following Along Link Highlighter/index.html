@@ -17,7 +17,7 @@
         <li><a href="">Read Our History</a></li>
         <li><a href="">Contact Us</a></li>
     </nav>
-    <div class="wapper">
+    <div class="wrapper">
         <p>Lorem ipsum dolor sit amet, <a href="">consectetur</a> adipisicing elit. Est <a href="">explicabo</a> unde natus necessitatibus esse obcaecati distinctio, aut itaque, qui vitae!</p>
         <p>Aspernatur sapiente quae sint <a href="">soluta</a> modi, atque praesentium laborum pariatur earum <a href="">quaerat</a> cupiditate consequuntur facilis ullam dignissimos, aperiam quam veniam.</p>
         <p>Cum ipsam quod, incidunt sit ex <a href="">tempore</a> placeat maxime <a href="">corrupti</a> possimus <a href="">veritatis</a> ipsum fugit recusandae est doloremque? Hic, <a href="">quibusdam</a>, nulla.</p>
@@ -25,7 +25,29 @@
         <p>Aliquam <a href="">dicta</a> sequi culpa fugiat <a href="">consequuntur</a> pariatur optio ad minima, maxime <a href="">odio</a>, distinctio magni impedit tempore enim repellendus <a href="">repudiandae</a> quas!</p>
     </div>
     <script type="text/javascript">
-
+        const triggers = document.querySelectorAll('a')
+        const highlight = document.createElement('span')
+        highlight.classList.add('highlight')
+        document.body.appendChild(highlight)
+        function highlightlink(){
+          const linkCoords = this.getBoundingClientRect()
+          const coords = {
+            width : linkCoords.width,
+            height : linkCoords.height,
+            top : linkCoords.top + window.scrollY,
+            left : linkCoords.left + window.scrollX
+          }
+          highlight.style.width = `${coords.width}px`
+          highlight.style.height = `${coords.height}px`
+          // highlight.style.top = `${linkCoords.top}px`
+          // highlight.style.right = `${linkCoords.right}px`
+          // highlight.style.bottom = `${linkCoords.bottom}px`
+          // highlight.style.left = `${linkCoords.left}px`
+          highlight.style.transform = `translate(${coords.left}px,${coords.top}px)`
+        }
+        triggers.forEach( link => {
+          link.addEventListener('mouseenter',highlightlink)
+        })
     </script>
 </body>
 
