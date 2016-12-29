@@ -1,0 +1,14 @@
+{
+  "name":"followalonglinkhightlighter",
+  "version":"0.0.1",
+  "description":"",
+  "main":"script.js",
+  "scripts":{
+    "start":"browser-sync start --server --files '*'"
+  },
+  "author":"xrr2016",
+  "license":"MIT",
+  "devDependencies":{
+    "browser-sync":"^2.16.0"
+  }
+}
