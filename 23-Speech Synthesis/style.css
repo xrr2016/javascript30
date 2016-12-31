@@ -34,12 +34,13 @@ html {
 
 body {
   padding: 0;
+  margin: 0;
   font-family: sans-serif;
   background-color:#3BC1AC;
   display:flex;
   min-height: 100vh;
+  height: 100%;
   align-items: center;
-
   background-image:
   radial-gradient(circle at 100% 150%, #3BC1AC 24%, #42D2BB 25%, #42D2BB 28%, #3BC1AC 29%, #3BC1AC 36%, #42D2BB 36%, #42D2BB 40%, transparent 40%, transparent),
   radial-gradient(circle at 0    150%, #3BC1AC 24%, #42D2BB 25%, #42D2BB 28%, #3BC1AC 29%, #3BC1AC 36%, #42D2BB 36%, #42D2BB 40%, transparent 40%, transparent),
