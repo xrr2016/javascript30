@@ -26,7 +26,7 @@ body {
 header {
   text-align: center;
   height:50vh;
-  background:url(http://wes.io/iEgP/wow-so-deep.jpg) bottom center no-repeat;
+  background:url(./bg.jpg) bottom center no-repeat;
   background-size:cover;
   display:flex;
   align-items:center;
@@ -39,11 +39,24 @@ h1 {
   text-shadow: 3px 4px 0 rgba(0,0,0,0.2)
 }
 
+.fixed-nav nav{
+    position: fixed;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+}
+
+.fixed-nav li.logo{
+  max-width: 100px;
+}
+
+.fixed-nav .site-wrap{
+  transform: scale(1.02);
+}
+
 nav {
   background:black;
   top:0;
   width: 100%;
-  transition:all 0.5s;
+  transition:all 1.2s;
   position: relative;
   z-index: 1;
 }
