@@ -12,7 +12,7 @@
 <body>
     <nav class="top">
         <div class="dropdownBackground">
-            <span class="arow"></span>
+            <span class="arrow"></span>
         </div>
         <ul class="cool">
             <li>
@@ -76,9 +76,22 @@
     function handleEnter(){
       this.classList.add('trigger-enter')
       setTimeout(() => { this.classList.add('trigger-enter-active') },150)
+      const clientRect = this.querySelector('.dropdown').getBoundingClientRect()
+      const coords = {
+        top: clientRect.top,
+        left:clientRect.left,
+        width:clientRect.width,
+        height:clientRect.height
+      }
+      dropdownBackground.classList.add('open')
+      dropdownBackground.style.top = coords.top +'px'
+      dropdownBackground.style.left = coords.left + 'px'
+      dropdownBackground.style.width = coords.width + 'px'
+      dropdownBackground.style.height = coords.height + 'px'
     }
     function handleLeave(){
       this.classList.remove('trigger-enter','trigger-enter-active')
+      dropdownBackground.classList.remove('open')
     }
     triggers.forEach( trigger => trigger.addEventListener('mouseenter',handleEnter))
     triggers.forEach( trigger => trigger.addEventListener('mouseleave',handleLeave))
