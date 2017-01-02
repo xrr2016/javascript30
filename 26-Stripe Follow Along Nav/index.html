@@ -75,7 +75,11 @@
 
     function handleEnter(){
       this.classList.add('trigger-enter')
-      setTimeout(() => { this.classList.add('trigger-enter-active') },150)
+      setTimeout(() => {
+        if (this.classList.contains('trigger-enter')) {
+          this.classList.add('trigger-enter-active')
+        }
+      },150)
       const clientRect = this.querySelector('.dropdown').getBoundingClientRect()
       const navCoords = nav.getBoundingClientRect()
       const coords = {
