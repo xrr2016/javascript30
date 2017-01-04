@@ -9,7 +9,7 @@
 </head>
 <body>
   <div class="wrapper">
-    <video width="765" height="430" class="flex" loop controls src="https://www.dropbox.com/s/nf6jfkwck1glsyo/12%20-%20flex-wrapping-and-columns.mp4?dl=1"  ></video>
+    <video width="765" height="430" class="flex" loop controls src="https://player.vimeo.com/external/194158897.hd.mp4?s=ddae6b33fe0f972ea4dc82251925c612affc1720&profile_id=119&oauth2_token_id=901465035"></video>
     <div class="speed">
       <div class="speed-bar">1x</div>
     </div>
@@ -18,6 +18,26 @@
     const speed  = document.querySelector('.speed')
     const bar = document.querySelector('.speed-bar')
     const video = document.querySelector('.flex')
+
+    function handleMove(e){
+      const y = e.pageY - this.offsetTop
+      const percent = y / this.offsetHeight
+      const min = 0.4
+      const max = 4
+      const height = Math.round(percent * 100) + "%"
+      const playBackRate = percent * ( max - min) + min
+      bar.style.height = height
+      video.playbackRate = playBackRate
+      bar.textContent = playBackRate.toFixed(2) + 'x'
+    }
+    speed.addEventListener('mousemove',handleMove)
+
+    window.addEventListener('keydown',(e)=>{
+      const paused = video.paused
+      if (e.keyCode === 32) {
+        paused ? video.play() : video.pause()
+      }
+    })
   </script>
 </body>
 </html>
