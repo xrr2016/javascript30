@@ -1,0 +1,106 @@
+/* vietnamese */
+@font-face {
+  font-family: 'Inconsolata';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Inconsolata Regular'), local('Inconsolata-Regular'), url(https://fonts.gstatic.com/s/inconsolata/v15/BjAYBlHtW3CJxDcjzrnZCL6up8jxqWt8HVA3mDhkV_0.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inconsolata';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Inconsolata Regular'), local('Inconsolata-Regular'), url(https://fonts.gstatic.com/s/inconsolata/v15/BjAYBlHtW3CJxDcjzrnZCCYE0-AqJ3nfInTTiDXDjU4.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inconsolata';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Inconsolata Regular'), local('Inconsolata-Regular'), url(https://fonts.gstatic.com/s/inconsolata/v15/BjAYBlHtW3CJxDcjzrnZCI4P5ICox8Kq3LLUNMylGO4.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+html {
+  box-sizing: border-box;
+  font-size: 10px;
+  background: #8E24AA;
+  background: linear-gradient(45deg,  #42a5f5 0%,#478ed1 50%,#0d47a1 100%);
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin:0;
+  text-align: center;
+  font-family: 'Inconsolata', monospace;
+}
+
+.display__time-left {
+  font-weight: 100;
+  font-size: 20rem;
+  margin: 0;
+  color:white;
+  text-shadow:4px 4px 0 rgba(0,0,0,0.05);
+}
+
+.timer {
+  display:flex;
+  min-height: 100vh;
+  flex-direction:column;
+}
+
+.timer__controls {
+  display: flex;
+}
+
+.timer__controls > * {
+  flex:1;
+}
+
+.timer__controls form {
+  flex:1;
+  display:flex;
+}
+
+.timer__controls input {
+  flex:1;
+  border:0;
+  padding:2rem;
+}
+
+.timer__button {
+  background:none;
+  border:0;
+  cursor: pointer;
+  color:white;
+  font-size: 2rem;
+  text-transform: uppercase;
+  background:rgba(0,0,0,0.1);
+  border-bottom:3px solid rgba(0,0,0,0.2);
+  border-right:1px solid rgba(0,0,0,0.2);
+  padding:1rem;
+  font-family: 'Inconsolata', monospace;
+}
+
+.timer__button:hover,
+.timer__button:focus {
+  background:rgba(0,0,0,0.2);
+  outline:0;
+}
+
+.display {
+  flex:1;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.display__end-time {
+  font-size: 4rem;
+  color:white;
+}
