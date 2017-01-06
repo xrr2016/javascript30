@@ -9,7 +9,7 @@
 </head>
 <body>
   <h1>Whack A Mole! <span class="score">0</span> </h1>
-  <button id="gameStartButton">Start!</button>
+  <p style="margin:0 atuo;font-size:24px;text-align:center;">Press Space To Start The Game.</p>
   <div class="game">
     <div class="hole hole1">
       <div class="mole"></div>
@@ -31,10 +31,57 @@
     </div>
   </div>
   <script type="text/javascript">
-    const startGameBtn = document.getElementById('startGameButton')
     const holes = document.querySelectorAll('.hole')
     const scoreBoard = document.querySelector('.score')
     const moles = document.querySelectorAll('.mole')
+    let lastHole
+    let timeUp = false
+    let score = 0
+    function randomTime(min,max){
+      return  Math.round(Math.random() * (max - min) - min)
+    }
+
+    function randomHole(holes){
+      const hole = holes[Math.floor(Math.random() * holes.length)]
+      if(hole === lastHole){
+        console.log('Is the same hole');
+        return randomHole(holes)
+      }
+      lastHole = hole
+      return hole
+    }
+
+    function peep(){
+      const time = randomTime(500,2000)
+      const hole = randomHole(holes)
+      hole.classList.add('up')
+      setTimeout(()=>{
+        timeUp ? null : peep()
+        hole.classList.remove('up')
+      },time)
+    }
+    function startGame(){
+        scoreBoard.textContent = 0
+        score = 0
+        timeUp = false
+        peep()
+        setTimeout(()=>{
+          timeUp = true
+          alert(`时间到,你获得了${score}分`)
+        },10000)
+    }
+    function bonk(e){
+      if (!e.isTrusted) return
+      score += 10
+      this.classList.remove('up')
+      scoreBoard.textContent = score
+    }
+    moles.forEach(mole => mole.addEventListener('click',bonk))
+    window.addEventListener('keyup',(e)=>{
+      if (e.keyCode === 32) {
+        startGame()
+      }
+    })
   </script>
 </body>
 </html>
