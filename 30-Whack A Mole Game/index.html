@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Whack A Mole!</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <h1>Whack A Mole! <span class="score">0</span> </h1>
+  <button id="gameStartButton">Start!</button>
+  <div class="game">
+    <div class="hole hole1">
+      <div class="mole"></div>
+    </div>
+    <div class="hole hole2">
+      <div class="mole"></div>
+    </div>
+    <div class="hole hole3">
+      <div class="mole"></div>
+    </div>
+    <div class="hole hole4">
+      <div class="mole"></div>
+    </div>
+    <div class="hole hole5">
+      <div class="mole"></div>
+    </div>
+    <div class="hole hole6">
+      <div class="mole"></div>
+    </div>
+  </div>
+  <script type="text/javascript">
+    const startGameBtn = document.getElementById('startGameButton')
+    const holes = document.querySelectorAll('.hole')
+    const scoreBoard = document.querySelector('.score')
+    const moles = document.querySelectorAll('.mole')
+  </script>
+</body>
+</html>
